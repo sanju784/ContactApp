@@ -1,0 +1,53 @@
+<html ng-app="contactApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Contact Application</title>
+		<script src="angular.js"></script>
+		<script src="app.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<div ng-controller="HeaderCtrl as head">
+			<h1>{{head.msg}}</h1>
+		</div>
+
+		<div class="container" ng-controller="ContactCtrl as ctrl">
+			<table class="table">
+				<tr>
+					<td>
+						<div class="row">
+							<ul class="list-group">
+								<li class="list-group-item" ng-repeat="contact in ctrl.contacts" ng-click="ctrl.selectContact($index)">
+									<span>{{contact.name.first + " " + contact.name.last}}</span>
+								</li>
+							</ul>
+						</div>
+					</td>
+					<td>
+						<div class="row">
+							<div class="media">
+				  				<a class="pull-left" href="#">
+				   					<img ng-src="{{ctrl.selectedContact.picture.medium}}"></img>
+				  				</a>
+				  				<div class="media-body">
+				    				<h4 class="media-heading">{{ctrl.selectedContact.name.first + " " + ctrl.selectedContact.name.last}}</h4>
+				    				<h6>Location</h6>
+				    				<p>
+				    					{{ctrl.selectedContact.location.street + " " + ctrl.selectedContact.location.city + " " + ctrl.selectedContact.location.state}}
+				    				</p>
+				    				<h6>Phone</h6>
+				    				<p>
+				    					{{ctrl.selectedContact.phone}}
+				    				</p>
+				  				</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+		</div>
+
+	</body>
+
+</html>
